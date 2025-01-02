@@ -33,8 +33,6 @@ def signup():
     data = request.json
     username = data.get('username')
     password = data.get('password')
-    confirm_password = data.get('confirmPassword')
-    print(username, password, confirm_password)
     if users_collection.find_one({'username': username}):
         return jsonify({'message': 'User already exists'}), 409
 
@@ -42,7 +40,6 @@ def signup():
     new_user = {
         'username': username,
         'password': hashed_password,
-        'confirmPassword': confirm_password
     }
     users_collection.insert_one(new_user)
     print('User created successfully')

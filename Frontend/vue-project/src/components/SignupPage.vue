@@ -78,7 +78,6 @@ export default {
         .post('http://127.0.0.1:5000/signup', {
           username: this.username,
           password: this.password,
-          confirmPassword: this.confirmPassword
         })
         .then((response) => {
           console.log('Signup successful:', response.data);
